@@ -6,7 +6,7 @@ import 'package:image_picker/image_picker.dart';
 
 
 class EditCard extends StatefulWidget {
-   EditCard({super.key});
+  EditCard({super.key});
 
   @override
   State<EditCard> createState() => _EditCardState();
@@ -67,8 +67,8 @@ class _EditCardState extends State<EditCard> {
                     child: CircleAvatar(
                       radius: 100,
                       backgroundImage: image != null
-                        ? FileImage(image!)
-                      : AssetImage('assets/images/shefa.jpeg') as ImageProvider,
+                          ? FileImage(image!)
+                          : AssetImage('assets/images/shefa.jpeg') as ImageProvider,
                     ),
                   ),
                   SizedBox(height: 10,),

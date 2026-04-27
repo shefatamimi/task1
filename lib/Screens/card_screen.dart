@@ -2,24 +2,40 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
+import '../Core/utils/database.dart';
 import 'edit_cardscreen.dart';
 class CardScreen extends StatefulWidget {
   CardScreen({super.key});
 
   @override
   State<CardScreen> createState() => _CardScreenState();
-  
-  
+
+
 }
 
 class _CardScreenState extends State<CardScreen> {
   Color colorlove = Colors.grey;
-  String name = 'Shefa AL Tamimi';
-  String title = 'Flutter Developer';
-  String description = 'Just building things with code 💻✨';
+  String name = '';
+  String title = '';
+  String description = '';
   String description2 = 'Love design, coffee, and Flutter ☕';
   String description3 = 'Turning ideas into apps 🚀';
   File? imageFile;
+
+  Future<void> initDefaultData() async {
+    final data = await DatabaseHelper.instance.query('card');
+
+    if (data.isEmpty) {
+      final db = await DatabaseHelper.instance.database;
+
+      await db.insert('card', {
+        'id': 1,
+        'name': 'Shefa AL Tamimi',
+        'title': 'Flutter Developer',
+        'description': 'Just building things with code 💻✨',
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +159,7 @@ class _CardScreenState extends State<CardScreen> {
                       if(colorlove==Colors.red){
                         colorlove=Colors.grey;
                       }else
-                       colorlove=Colors.red;
+                        colorlove=Colors.red;
                     });
 
                   },
@@ -276,6 +292,5 @@ class _CardScreenState extends State<CardScreen> {
 
   }
 }
-
 
 
