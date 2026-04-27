@@ -28,7 +28,7 @@ class DatabaseHelper {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT,
       title TEXT,
-      description TEXT,
+      description TEXT
       )
     ''');
 
