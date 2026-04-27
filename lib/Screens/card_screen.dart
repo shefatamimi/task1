@@ -15,9 +15,9 @@ class CardScreen extends StatefulWidget {
 
 class _CardScreenState extends State<CardScreen> {
   Color colorlove = Colors.grey;
-  String name = '';
-  String title = '';
-  String description = '';
+  String name = 'Shefa AL Tamimi';
+  String title = 'Flutter Developer';
+  String description = 'Just building things with code 💻✨';
   String description2 = 'Love design, coffee, and Flutter ☕';
   String description3 = 'Turning ideas into apps 🚀';
   File? imageFile;
@@ -292,5 +292,4 @@ class _CardScreenState extends State<CardScreen> {
 
   }
 }
-
 
