@@ -29,8 +29,7 @@ class _EditCardState extends State<EditCard> {
 
   @override
   void initState() {
-    super.initState();
-
+    super.initState();// استقبال القيم الي انبعثت من السكرين الاولى بالفنكشن
     nameController.text = widget.name;
     titleController.text = widget.title;
     descriptionController.text = widget.description;
@@ -178,15 +177,8 @@ class _EditCardState extends State<EditCard> {
                   Center(
                     child: TextButton(
                       onPressed: () async {
-                        try {
-                          await updateCard();
-
-                          if (mounted) {
-                            Navigator.pop(context, true);
-                          }
-                        } catch (e) {
-                          print("UPDATE ERROR: $e");
-                        }
+                        await updateCard();
+                        Navigator.pop(context, true);
                       },
                       child: const Text(
                         "Update",

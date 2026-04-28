@@ -13,9 +13,7 @@ class CardScreen extends StatefulWidget {
 
 class _CardScreenState extends State<CardScreen> {
   Color colorlove = Colors.grey;
-
   File? imageFile;
-
   TextEditingController nameController = TextEditingController();
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
@@ -23,30 +21,11 @@ class _CardScreenState extends State<CardScreen> {
   @override
   void initState() {
     super.initState();
-    initDefaultData();
     loadCard();
   }
 
-  Future<void> initDefaultData() async {
-    final data = await DatabaseHelper.instance.query('card');
-
-    if (data.isEmpty) {
-      final db = await DatabaseHelper.instance.database;
-
-      await db.insert(
-        'card',
-        {
-          'name': 'Shefa',
-          'title': 'Flutter',
-          'description': 'dev',
-        },
-        conflictAlgorithm: ConflictAlgorithm.replace,
-      );
-    }
-  }
-
   Future<void> loadCard() async {
-    final data = await DatabaseHelper.instance.query('card');
+    final data = await DatabaseHelper.instance.query('card'); //list of map
 
     if (data.isNotEmpty) {
       setState(() {
@@ -109,7 +88,6 @@ class _CardScreenState extends State<CardScreen> {
 
                 if (result == true) {
                   await loadCard();
-                  print("UPDATED");
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content: Text("Profile Updated ✔"),
